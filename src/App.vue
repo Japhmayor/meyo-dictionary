@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <main-page />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MainPage from './components/main'
+// import NavBar from "./components/navbar";
+// import MainPage from "./components/main";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    MainPage
-  }
-}
+    // MainPage,
+    // NavBar,
+  },
+};
 </script>
 
 <style>

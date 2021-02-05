@@ -1,8 +1,13 @@
 <template>
   <div>
+    <navbar />
     <div class="container">
-      <h1 class="text-secondary cursive title">Meyo Dictionary</h1>
-
+      <!-- <h1 class="text-secondary cursive title">Meyo Dictionary</h1> -->
+      <div class="igbo">
+        <button class="btn btn-danger shadow-none">
+          <router-link to="/igbo">Igbo dictionary </router-link>
+        </button>
+      </div>
       <div class="contents">
         <div class="input-group mb-3">
           <input
@@ -53,7 +58,10 @@
                 <span>{{ i.emoji }}</span>
               </p>
 
-              <p class="example text-center text-info font-weight-bold">
+              <p
+                v-html="i.example"
+                class="example text-center text-info font-weight-bold"
+              >
                 "{{ i.example }}"
               </p>
               <img class="rounded-circle" :src="i.image_url" alt="" />
@@ -62,14 +70,21 @@
         </section>
       </div>
     </div>
+    <page-footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Navbar from "./navbar.vue";
+import PageFooter from "./pageFooter.vue";
 // var Owlbot = require("owlbot-js");
 // var client = Owlbot("7ebfb299e250054c27e5776e369e93b6eef18c60");
 export default {
+  components: {
+    Navbar,
+    PageFooter,
+  },
   data() {
     return {
       info: null,
@@ -123,13 +138,13 @@ export default {
   font-family: cursive;
 }
 
-.container {
-  margin-top: -60px;
-}
-
 .title {
   font-size: 40px;
   padding-top: 40px;
+}
+
+.igbo {
+  display: none;
 }
 
 .contents {
@@ -159,6 +174,17 @@ img {
     width: 100%;
     height: auto;
     /* margin: 0; */
+  }
+
+  .igbo {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: -40px;
+    float: right;
+  }
+
+  .igbo button a {
+    color: white;
   }
 }
 </style>
